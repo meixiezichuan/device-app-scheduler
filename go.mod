@@ -3,8 +3,10 @@ module github.com/meixiezichuan/device-app-scheduler
 go 1.16
 
 require (
+	github.com/meixiezichuan/clustertopology v0.0.2
 	k8s.io/api v0.22.16
 	k8s.io/apimachinery v0.22.16
+	k8s.io/client-go v0.22.16
 	k8s.io/klog/v2 v2.9.0
 	k8s.io/kubernetes v1.22.16
 )

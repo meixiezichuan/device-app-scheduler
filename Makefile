@@ -80,7 +80,7 @@ build-scheduler.arm64: test
 
 .PHONY: build
 build: fmt vet ## Build manager binary.
-	go build -o bin/da-scheduler main.go device-app-scheduler.go
+	go build -o bin/da-scheduler main.go
 
 .PHONY: run
 run: fmt vet ## Run a controller from your host.
