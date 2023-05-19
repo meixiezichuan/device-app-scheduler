@@ -71,11 +71,11 @@ test:  fmt vet  ## Run tests.
 
 .PHONY: build-scheduler.amd64
 build-scheduler.amd64: test
-	$(COMMONENVVAR) $(BUILDENVVAR) GOARCH=amd64 go build -ldflags '-X k8s.io/component-base/version.gitVersion=$(VERSION) -w' -o bin/da-scheduler main.go device-app-scheduler.go
+	$(COMMONENVVAR) $(BUILDENVVAR) GOARCH=amd64 go build -ldflags '-X k8s.io/component-base/version.gitVersion=$(VERSION) -w' -o bin/da-scheduler main.go
 
 .PHONY: build-scheduler.arm64
 build-scheduler.arm64: test
-	GOOS=linux $(BUILDENVVAR) GOARCH=arm64 go build -ldflags '-X k8s.io/component-base/version.gitVersion=$(VERSION) -w' -o bin/da-scheduler main.go device-app-scheduler.go
+	GOOS=linux $(BUILDENVVAR) GOARCH=arm64 go build -ldflags '-X k8s.io/component-base/version.gitVersion=$(VERSION) -w' -o bin/da-scheduler main.go
 
 
 .PHONY: build

@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: scheduler-sa
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: scheduler
+subjects:
+  - kind: ServiceAccount
+    name: scheduler-sa
+    namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: system:kube-scheduler
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: device-app-scheduler
+  namespace: kube-system
+  labels:
+    component: device-app-scheduler
+spec:
+  selector:
+    matchLabels:
+      component: device-app-scheduler
+  template:
+    metadata:
+      labels:
+        component: device-app-scheduler
+    spec:
+      serviceAccountName: scheduler-sa
+      priorityClassName: system-cluster-critical
+      containers:
+        - name: scheduler
+          image: meixie/device-app-scheduler:v0.0.1
+          imagePullPolicy: IfNotPresent
+

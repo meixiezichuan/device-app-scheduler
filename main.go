@@ -1,4 +1,4 @@
-package networkaware
+package main
 
 import (
 	"k8s.io/klog/v2"
