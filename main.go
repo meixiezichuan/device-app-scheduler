@@ -1,16 +1,13 @@
 package main
 
 import (
+	"github.com/meixiezichuan/device-app-scheduler/networkaware"
 	"k8s.io/klog/v2"
 	"k8s.io/kubernetes/cmd/kube-scheduler/app"
-	"k8s.io/kubernetes/pkg/scheduler/framework/plugins/defaultbinder"
-
-	"github.com/meixiezichuan/device-app-scheduler/networkaware"
 )
 
 func main() {
 	command := app.NewSchedulerCommand(
-		app.WithPlugin(defaultbinder.Name, defaultbinder.New),
 		app.WithPlugin(networkaware.NetworkOverheadName, networkaware.NewNetworkOverhead),
 	)
 
